@@ -5,22 +5,22 @@
 // Unauthenticated users should be able to read blog posts
 
 // Importing modules
-
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const authRoutes = require("./routes/auth");
 const roleRoutes = require("./routes/role");
 const communityRoutes = require("./routes/community");
 const memberRoutes = require("./routes/member");
-
 const cookieParser = require("cookie-parser");
 const ensureAuthenticated = require("./middleware/ensureAuthenticated");
 
 // Connecting to MongoDB
 const mongoose = require("mongoose");
+
 mongoose
   .connect(
-    "mongodb+srv://user:user@mongo-tif.i1kbreo.mongodb.net/?retryWrites=true&w=majority",
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@mongo-tif.i1kbreo.mongodb.net/?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
