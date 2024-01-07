@@ -10,15 +10,15 @@ router.post("/member", async (req, res) => {
   const userId = req.cookies.user; // Assuming the user ID is stored in a cookie named "userId"
   console.log("trying to add", user, "to", community, "as", role, "by", userId);
   // Check if the current user has the role Community Admin on the community
-  const isAdmin = await Member.findOne({
-    community,
-    user: userId,
-    role: "Community Admin",
+
+  const community_admin = await Community.findOne({
+    id: community,
+    owner: userId,
   });
 
   try {
     //if not dont allow to create member
-    if (!isAdmin) {
+    if (!community_admin) {
       return res.status(400).json({
         status: false,
         errors: [
@@ -58,7 +58,7 @@ router.post("/member", async (req, res) => {
     }
     //check if role is valid
 
-    const isRole = await Role.findById(role);
+    const isRole = await Role.findOne({ id: role });
     if (!isRole) {
       return res.status(400).json({
         status: false,
@@ -73,7 +73,7 @@ router.post("/member", async (req, res) => {
     }
 
     //check if community is valid
-    const communityExists = await Community.findById(community);
+    const communityExists = await Community.findOne({ id: community });
     if (!communityExists) {
       return res.status(400).json({
         status: false,

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Snowflake } = require("@theinternetfolks/snowflake");
 
 const member = new mongoose.Schema({
-  id: { type: String, primary: true, default: Snowflake.generate },
+  id: { type: String, primary: true, default: () => Snowflake.generate() },
   community: {
     type: String,
     required: true,

@@ -2,7 +2,7 @@
 .env
 .env.*
 # END: /home/shashank/Projects/levitation/.gitignore
-
+node_modeules
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
