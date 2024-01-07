@@ -13,8 +13,12 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose port 3000 for the application
+# Expose port 5000 for the application
 EXPOSE 5000
+
+# Define environment variables
+ENV MONGO_USER=user
+ENV MONGO_PASSWORD=user
 
 # Define the command to run the application
 CMD [ "node", "app.js" ]
