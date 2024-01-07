@@ -1,0 +1,9 @@
+# BEGIN: /home/shashank/Projects/levitation/.gitignore
+.env
+.env.*
+# END: /home/shashank/Projects/levitation/.gitignore
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
